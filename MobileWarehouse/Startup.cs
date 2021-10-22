@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using MobileWarehouse.Entity.Models;
 using MobileWarehouse.Helpers;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace MobileWarehouse
 {
@@ -25,6 +26,14 @@ namespace MobileWarehouse
             services.AddDbContextPool<ApplicationContext>(opt => opt.UseMySql(Configuration.GetConnectionString(Util.DefaultConnection),
                ServerVersion.AutoDetect(Configuration.GetConnectionString(Util.DefaultConnection)),
                    x => x.MigrationsAssembly(Util.Entity)));
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+               .AddCookie(options =>
+               {
+                   options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                   options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+               });
+
             services.AddControllersWithViews();
         }
 
