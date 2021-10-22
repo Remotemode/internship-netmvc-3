@@ -17,6 +17,51 @@ namespace MobileWarehouse.Entity.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.11");
 
+            modelBuilder.Entity("MobileWarehouse.Entity.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ContactPhone")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("PhoneId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("User")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PhoneId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("MobileWarehouse.Entity.Models.Phone", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Company")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Phones");
+                });
+
             modelBuilder.Entity("MobileWarehouse.Entity.Models.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -72,6 +117,17 @@ namespace MobileWarehouse.Entity.Migrations
                             Password = "123456",
                             RoleId = 1
                         });
+                });
+
+            modelBuilder.Entity("MobileWarehouse.Entity.Models.Order", b =>
+                {
+                    b.HasOne("MobileWarehouse.Entity.Models.Phone", "Phone")
+                        .WithMany()
+                        .HasForeignKey("PhoneId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Phone");
                 });
 
             modelBuilder.Entity("MobileWarehouse.Entity.Models.User", b =>

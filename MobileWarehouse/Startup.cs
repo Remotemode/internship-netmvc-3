@@ -22,9 +22,12 @@ namespace MobileWarehouse
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers(opt => opt.Filters.Add<GlobalExceptionHandler>());
+
             services.AddDbContextPool<ApplicationContext>(opt => opt.UseMySql(Configuration.GetConnectionString(Util.DefaultConnection),
                ServerVersion.AutoDetect(Configuration.GetConnectionString(Util.DefaultConnection)),
                    x => x.MigrationsAssembly(Util.Entity)));
+
             services.AddControllersWithViews();
         }
 
