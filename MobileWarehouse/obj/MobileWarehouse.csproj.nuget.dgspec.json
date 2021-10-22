@@ -1,34 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lipec\\Documents\\Git\\internship-netmvc-3\\MobileWarehouse\\MobileWarehouse.csproj": {}
+    "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse\\MobileWarehouse.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lipec\\Documents\\Git\\internship-netmvc-3\\MobileWarehouse\\MobileWarehouse.csproj": {
+    "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse.Entity\\MobileWarehouse.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lipec\\Documents\\Git\\internship-netmvc-3\\MobileWarehouse\\MobileWarehouse.csproj",
-        "projectName": "MobileWarehouse",
-        "projectPath": "C:\\Users\\lipec\\Documents\\Git\\internship-netmvc-3\\MobileWarehouse\\MobileWarehouse.csproj",
-        "packagesPath": "C:\\Users\\lipec\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lipec\\Documents\\Git\\internship-netmvc-3\\MobileWarehouse\\obj\\",
+        "projectUniqueName": "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse.Entity\\MobileWarehouse.Entity.csproj",
+        "projectName": "MobileWarehouse.Entity",
+        "projectPath": "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse.Entity\\MobileWarehouse.Entity.csproj",
+        "packagesPath": "C:\\Users\\tored\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\lipec\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\tored\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://packages.deltixhub.com/nuget/XCritical.NET/": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +43,102 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse\\MobileWarehouse.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse\\MobileWarehouse.csproj",
+        "projectName": "MobileWarehouse",
+        "projectPath": "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse\\MobileWarehouse.csproj",
+        "packagesPath": "C:\\Users\\tored\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\tored\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://packages.deltixhub.com/nuget/XCritical.NET/": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse.Entity\\MobileWarehouse.Entity.csproj": {
+                "projectPath": "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse.Entity\\MobileWarehouse.Entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -58,7 +157,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
