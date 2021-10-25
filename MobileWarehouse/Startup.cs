@@ -8,6 +8,7 @@ using System;
 using MobileWarehouse.Entity.Models;
 using MobileWarehouse.Helpers;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using MobileWarehouse.Entity.Extensions;
 
 namespace MobileWarehouse
 {
@@ -35,6 +36,7 @@ namespace MobileWarehouse
                });
 
             services.AddControllersWithViews();
+            services.AddEFModule();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

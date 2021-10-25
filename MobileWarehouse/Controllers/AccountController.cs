@@ -1,23 +1,23 @@
 ﻿using MobileWarehouse.Entity.Models;
-using MobileWarehouse.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System;
+using MobileWarehouse.Common.Models;
+using MobileWarehouse.Entity.Repository.Interface;
 
 namespace MobileWarehouse.Controllers
 {
     public class AccountController : Controller
     {
-        private ApplicationContext _context;
+        private readonly IUserRepository _userRepository;
 
-        public AccountController(ApplicationContext context)
+        public AccountController(IUserRepository userRepository)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
         }
 
         [HttpGet]
@@ -32,24 +32,16 @@ namespace MobileWarehouse.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+                var user = await _userRepository.AddUserToDb(model);
                 if (user == null)
                 {
-                    // добавляем пользователя в бд
-                    user = new User { Email = model.Email, Password = model.Password };
-                    Role userRole = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "user");
-                    if (userRole != null)
-                        user.Role = userRole;
-
-                    _context.Users.Add(user);
-                    await _context.SaveChangesAsync();
-
-                    await Authenticate(user); // аутентификация
-
+                    await Authenticate(user);
                     return RedirectToAction("Index", "Home");
                 }
                 else
+                {
                     ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                }
             }
             return View(model);
         }
@@ -66,12 +58,10 @@ namespace MobileWarehouse.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await _context.Users
-                    .Include(u => u.Role)
-                    .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                var user = await _userRepository.FindUserFromDb(model);
                 if (user != null)
                 {
-                    await Authenticate(user); // аутентификация
+                    await Authenticate(user);
 
                     return RedirectToAction("Index", "Home");
                 }

@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileWarehouse", "MobileWarehouse.csproj", "{C5AE8AD3-7F71-4235-9526-A860D39D3B9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileWarehouse.Entity", "..\MobileWarehouse.Entity\MobileWarehouse.Entity.csproj", "{E0E82CB0-E606-43F4-A764-0C03C4694111}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileWarehouse.Entity", "..\MobileWarehouse.Entity\MobileWarehouse.Entity.csproj", "{E0E82CB0-E606-43F4-A764-0C03C4694111}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileWarehouse.Common", "..\MobileWarehouse.Common\MobileWarehouse.Common.csproj", "{371C6913-30A7-46F5-A12B-1899A1DE1EBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E0E82CB0-E606-43F4-A764-0C03C4694111}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0E82CB0-E606-43F4-A764-0C03C4694111}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0E82CB0-E606-43F4-A764-0C03C4694111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{371C6913-30A7-46F5-A12B-1899A1DE1EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{371C6913-30A7-46F5-A12B-1899A1DE1EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{371C6913-30A7-46F5-A12B-1899A1DE1EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{371C6913-30A7-46F5-A12B-1899A1DE1EBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

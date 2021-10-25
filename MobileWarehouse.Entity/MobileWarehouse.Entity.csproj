@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\Interface\" />
+    <ProjectReference Include="..\MobileWarehouse.Common\MobileWarehouse.Common.csproj" />
   </ItemGroup>
 
 </Project>
