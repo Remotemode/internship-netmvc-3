@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
 using System;
 using MobileWarehouse.Entity.Models;
 using MobileWarehouse.Helpers;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using MobileWarehouse.Entity.Extensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace MobileWarehouse
 {
@@ -28,7 +30,15 @@ namespace MobileWarehouse
                ServerVersion.AutoDetect(Configuration.GetConnectionString(Util.DefaultConnection)),
                    x => x.MigrationsAssembly(Util.Entity)));
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+               .AddCookie(options =>
+               {
+                   options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                   options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+               });
+
             services.AddControllersWithViews();
+            services.AddEFModule();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1843,11 +1843,22 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "MobileWarehouse.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/MobileWarehouse.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MobileWarehouse.Common.dll": {}
+        }
+      },
       "MobileWarehouse.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "5.0.11",
+          "MobileWarehouse.Common": "1.0.0",
           "Pomelo.EntityFrameworkCore.MySql": "5.0.2"
         },
         "compile": {
@@ -6262,6 +6273,11 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "MobileWarehouse.Common/1.0.0": {
+      "type": "project",
+      "path": "../MobileWarehouse.Common/MobileWarehouse.Common.csproj",
+      "msbuildProject": "../MobileWarehouse.Common/MobileWarehouse.Common.csproj"
+    },
     "MobileWarehouse.Entity/1.0.0": {
       "type": "project",
       "path": "../MobileWarehouse.Entity/MobileWarehouse.Entity.csproj",
@@ -6272,6 +6288,7 @@
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.EntityFrameworkCore.Relational >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.11",
+      "MobileWarehouse.Common >= 1.0.0",
       "MobileWarehouse.Entity >= 1.0.0",
       "Pomelo.EntityFrameworkCore.MySql >= 5.0.2",
       "Serilog >= 2.10.0",
@@ -6315,6 +6332,9 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+            "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse.Common\\MobileWarehouse.Common.csproj": {
+              "projectPath": "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse.Common\\MobileWarehouse.Common.csproj"
+            },
             "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse.Entity\\MobileWarehouse.Entity.csproj": {
               "projectPath": "C:\\Users\\tored\\OneDrive\\Documents\\internship-netmvc-3\\MobileWarehouse.Entity\\MobileWarehouse.Entity.csproj"
             }

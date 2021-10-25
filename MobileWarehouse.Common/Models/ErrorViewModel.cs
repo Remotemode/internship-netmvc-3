@@ -1,6 +1,6 @@
 using System;
 
-namespace MobileWarehouse.Models
+namespace MobileWarehouse.Common.Models
 {
     public class ErrorViewModel
     {
