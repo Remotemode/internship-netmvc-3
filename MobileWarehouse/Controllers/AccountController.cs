@@ -40,7 +40,7 @@ namespace MobileWarehouse.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                    ModelState.AddModelError("", "Registration completed successfully");
                 }
             }
             return View(model);
@@ -65,7 +65,7 @@ namespace MobileWarehouse.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                ModelState.AddModelError("", "Incorrect login and (or) password");
             }
             return View(model);
         }
