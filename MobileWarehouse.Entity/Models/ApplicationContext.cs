@@ -10,6 +10,8 @@ namespace MobileWarehouse.Entity.Models
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Phone> Phones { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
