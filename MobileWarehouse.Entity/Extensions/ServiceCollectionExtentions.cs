@@ -9,6 +9,10 @@ namespace MobileWarehouse.Entity.Extensions
         public static void AddEFModule(this IServiceCollection service)
         {
             service.AddTransient<IUserRepository, UserRepository>();
+
+            service.AddTransient<IPhoneRepository, PhoneRepository>();
+
+            service.AddTransient<IOrderRepository, OrderRepository>();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace MobileWarehouse.Entity.Migrations
 
             modelBuilder.Entity("MobileWarehouse.Entity.Models.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -35,7 +35,7 @@ namespace MobileWarehouse.Entity.Migrations
                     b.Property<string>("User")
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("OrderId");
 
                     b.HasIndex("PhoneId");
 

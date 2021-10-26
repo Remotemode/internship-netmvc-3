@@ -32,7 +32,7 @@ namespace MobileWarehouse.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userRepository.AddUserToDb(model);
+                var user = await _userRepository.AddUserToDbAsync(model);
                 if (user == null)
                 {
                     await Authenticate(user);
@@ -43,6 +43,12 @@ namespace MobileWarehouse.Controllers
                     ModelState.AddModelError("", "Registration completed successfully");
                 }
             }
+            else
+            {
+                ModelState.AddModelError("", "Fill in all fields with correct data");
+                return View(model);
+            }
+
             return View(model);
         }
 
@@ -58,12 +64,12 @@ namespace MobileWarehouse.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userRepository.FindUserFromDb(model);
+                var user = await _userRepository.FindUserFromDbAsync(model);
                 if (user != null)
                 {
                     await Authenticate(user);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Phone", "PhonePrice");
                 }
                 ModelState.AddModelError("", "Incorrect login and (or) password");
             }
@@ -72,16 +78,15 @@ namespace MobileWarehouse.Controllers
 
         private async Task Authenticate(User user)
         {
-            // создаем один claim
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
                 new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name)
             };
-            // создаем объект ClaimsIdentity
+
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,
                 ClaimsIdentity.DefaultRoleClaimType);
-            // установка аутентификационных куки
+
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
     }

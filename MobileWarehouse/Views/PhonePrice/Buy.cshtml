@@ -1,0 +1,34 @@
+﻿@{
+  Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order placement</title>
+</head>
+<body>
+  <div>
+    <h3>Purchase form</h3>
+    <p>To complete the purchase, fill in the following fields:</p>
+    <form method="post">
+      <input type="hidden" value="@ViewBag.PhoneId" name="PhoneId" />
+      <table>
+        <tr>
+          <td>Name:</td>
+          <td><input type="text" name="User" /> </td>
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td><input type="text" name="Address" /></td>
+        </tr>
+        <tr>
+          <td>Telephone:</td>
+          <td><input type="text" name="ContactPhone" /></td>
+        </tr>
+        <tr><td><input type="submit" value="Send" /> </td><td></td></tr>
+      </table>
+    </form>
+  </div>
+</body>
+</html>

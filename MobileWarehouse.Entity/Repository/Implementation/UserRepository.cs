@@ -16,7 +16,7 @@ namespace MobileWarehouse.Entity.Repository.Implementation
             _applicationContext = applicationContext ?? throw new ArgumentNullException(nameof(applicationContext));
         }
 
-        public async Task<User> AddUserToDb(RegisterModel model)
+        public async Task<User> AddUserToDbAsync(RegisterModel model)
         {
             var user = await _applicationContext.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
             if (user == null)
@@ -32,7 +32,7 @@ namespace MobileWarehouse.Entity.Repository.Implementation
             return user;
         }
 
-        public async Task<User> FindUserFromDb(LoginModel model)
+        public async Task<User> FindUserFromDbAsync(LoginModel model)
         {
             var user = await _applicationContext.Users
                     .Include(u => u.Role)
