@@ -9,7 +9,7 @@ using MobileWarehouse.Entity.Models;
 namespace MobileWarehouse.Entity.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20211022133848_Initial")]
+    [Migration("20211026073609_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace MobileWarehouse.Entity.Migrations
 
             modelBuilder.Entity("MobileWarehouse.Entity.Models.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -37,7 +37,7 @@ namespace MobileWarehouse.Entity.Migrations
                     b.Property<string>("User")
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("OrderId");
 
                     b.HasIndex("PhoneId");
 

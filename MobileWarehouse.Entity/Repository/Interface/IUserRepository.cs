@@ -6,8 +6,8 @@ namespace MobileWarehouse.Entity.Repository.Interface
 {
     public interface IUserRepository
     {
-        Task<User> AddUserToDb(RegisterModel model);
+        Task<User> AddUserToDbAsync(RegisterModel model);
 
-        Task<User> FindUserFromDb(LoginModel model);
+        Task<User> FindUserFromDbAsync(LoginModel model);
     }
 }
