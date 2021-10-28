@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MobileWarehouse.Entity.Models;
 using MobileWarehouse.Entity.PreDeploimentDate;
+using MobileWarehouse.Helpers;
 using Serilog;
 
 namespace MobileWarehouse
@@ -24,10 +25,7 @@ namespace MobileWarehouse
                 }
                 catch (Exception ex)
                 {
-                    var exceptionSource = ex.Source;
-                    var exceptionStack = ex.StackTrace;
-                    var exceptionMessage = ex.Message;
-                    Log.Error($"{nameof(Main)} | Source - {exceptionSource} | Message - {exceptionMessage} | StackTrace - {exceptionStack}.");
+                    Log.Error($"{nameof(Main)} | Source - {ex.Source} | Message - {ex.StackTrace} | StackTrace - {ex.Message}.");
                 }
             }
             host.Run();
@@ -36,6 +34,8 @@ namespace MobileWarehouse
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog()
+                .ConfigureSeqLogging()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
