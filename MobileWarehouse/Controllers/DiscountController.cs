@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MobileWarehouse.Repository.Interface;
+using Serilog;
 using System;
 
 namespace MobileWarehouse.Controllers
@@ -24,6 +25,7 @@ namespace MobileWarehouse.Controllers
             }
             else
             {
+                Log.Error($"This {nameof(token)}: {token} is not valid");
                 return Unauthorized(new { errorText = "Invalid token" });
             }
         }

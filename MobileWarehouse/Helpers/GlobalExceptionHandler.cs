@@ -10,15 +10,11 @@ namespace MobileWarehouse.Helpers
         {
             if (context.Exception != null)
             {
-                var exceptionSource = context.Exception.Source;
-                var exceptionStack = context.Exception.StackTrace;
-                var exceptionMessage = context.Exception.Message;
-
                 context.ExceptionHandled = false;
                 context.Result = new JsonResult("Something was wrong!");
                 context.HttpContext.Response.StatusCode = 400;
 
-                Log.Error($"{nameof(GlobalExceptionHandler)} | Source - {exceptionSource} | Message - {exceptionMessage} | StackTrace - {exceptionStack}.");
+                Log.Error($"{nameof(GlobalExceptionHandler)} | Source - {context.Exception.Source} | Message - {context.Exception.StackTrace} | StackTrace - {context.Exception.Message}.");
             }
         }
     }
