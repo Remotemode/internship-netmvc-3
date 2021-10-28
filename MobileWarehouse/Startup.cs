@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +9,9 @@ using MobileWarehouse.Helpers;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using MobileWarehouse.Entity.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using MobileWarehouse.Extensions;
 
 namespace MobileWarehouse
 {
@@ -26,6 +29,31 @@ namespace MobileWarehouse
         {
             services.AddControllers(opt => opt.Filters.Add<GlobalExceptionHandler>());
 
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options =>
+                    {
+                        options.RequireHttpsMetadata = false;
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            // indicates whether the publisher will be verified when validating the token
+                            ValidateIssuer = true,
+                            // a string representing the publisher
+                            ValidIssuer = AuthOptions.ISSUER,
+
+                            // whether the consumer of the token will be verified
+                            ValidateAudience = true,
+                            // token consumer setup
+                            ValidAudience = AuthOptions.AUDIENCE,
+                            // whether the lifetime will be validated
+                            ValidateLifetime = true,
+
+                            // security key installation
+                            IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
+                            // security key check
+                            ValidateIssuerSigningKey = true,
+                        };
+                    });
+
             services.AddDbContextPool<ApplicationContext>(opt => opt.UseMySql(Configuration.GetConnectionString(Util.DefaultConnection),
                ServerVersion.AutoDetect(Configuration.GetConnectionString(Util.DefaultConnection)),
                    x => x.MigrationsAssembly(Util.Entity)));
@@ -38,7 +66,8 @@ namespace MobileWarehouse
                });
 
             services.AddControllersWithViews();
-            services.AddEFModule();
+            services.AddEFModule(); 
+            services.AddMobileWarehouseModule(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
