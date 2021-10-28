@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using System;
 using MobileWarehouse.Common.Models;
 using MobileWarehouse.Entity.Repository.Interface;
+using Serilog;
 
 namespace MobileWarehouse.Controllers
 {
@@ -45,6 +46,7 @@ namespace MobileWarehouse.Controllers
             }
             else
             {
+                Log.Error("Fill in all fields with correct data");
                 ModelState.AddModelError("", "Fill in all fields with correct data");
                 return View(model);
             }
@@ -71,6 +73,7 @@ namespace MobileWarehouse.Controllers
 
                     return RedirectToAction("Phone", "PhonePrice");
                 }
+                Log.Error($"Incorrect login: {model.Email} and (or) password {model.Password}");
                 ModelState.AddModelError("", "Incorrect login and (or) password");
             }
             return View(model);

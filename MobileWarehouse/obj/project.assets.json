@@ -2064,7 +2064,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "5.0.11",
           "MobileWarehouse.Common": "1.0.0",
-          "Pomelo.EntityFrameworkCore.MySql": "5.0.2"
+          "Pomelo.EntityFrameworkCore.MySql": "5.0.2",
+          "Serilog": "2.10.0"
         },
         "compile": {
           "bin/placeholder/MobileWarehouse.Entity.dll": {}

@@ -2,6 +2,7 @@
 using MobileWarehouse.Common.Models;
 using MobileWarehouse.Entity.Repository.Interface;
 using MobileWarehouse.Repository.Interface;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -82,9 +83,9 @@ namespace MobileWarehouse.Repository.Implementation
                     IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey()
                 }, out SecurityToken validatedToken);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                Log.Error($"{nameof(ValidateToken)} | Message - {e.Message}");
                 return false;
             }
             return true;

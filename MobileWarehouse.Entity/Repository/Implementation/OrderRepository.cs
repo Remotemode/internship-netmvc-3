@@ -1,5 +1,6 @@
 ﻿using MobileWarehouse.Entity.Models;
 using MobileWarehouse.Entity.Repository.Interface;
+using Serilog;
 using System;
 using System.Threading.Tasks;
 
