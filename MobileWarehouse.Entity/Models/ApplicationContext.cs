@@ -18,7 +18,7 @@ namespace MobileWarehouse.Entity.Models
             string adminRoleName = "admin";
             string userRoleName = "user";
 
-            string adminEmail = "admin@mail.ru";
+            string adminEmail = "admin@gmail.com";
             string adminPassword = "123456";
 
             Role adminRole = new Role { Id = 1, Name = adminRoleName };
