@@ -55,9 +55,9 @@ namespace MobileWarehouse
                         };
                     });
 
-            services.AddDbContextPool<ApplicationContext>(opt => opt.UseMySql(Configuration.GetConnectionString(Util.DefaultConnection),
-               ServerVersion.AutoDetect(Configuration.GetConnectionString(Util.DefaultConnection)),
-                   x => x.MigrationsAssembly(Util.Entity)));
+            services.AddDbContextPool<ApplicationContext>(opt => opt.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+               ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection")),
+                   x => x.MigrationsAssembly("Entity")));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                .AddCookie(options =>
