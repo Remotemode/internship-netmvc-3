@@ -66,7 +66,7 @@ namespace MobileWarehouse.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userRepository.FindUserFromDbAsync(model);
+                var user = await _userRepository.GetUserFromDbAsync(model);
                 if (user != null)
                 {
                     await Authenticate(user);

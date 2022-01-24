@@ -8,6 +8,6 @@ namespace MobileWarehouse.Entity.Repository.Interface
     {
         Task<User> AddUserToDbAsync(RegisterModel model);
 
-        Task<User> FindUserFromDbAsync(LoginModel model);
+        Task<User> GetUserFromDbAsync(LoginModel model);
     }
 }

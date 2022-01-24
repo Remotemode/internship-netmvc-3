@@ -50,7 +50,7 @@ namespace MobileWarehouse.Repository.Implementation
 
         private async Task<ClaimsIdentity> GetIdentity(LoginModel model)
         {
-            var user = await _userRepository.FindUserFromDbAsync(model);
+            var user = await _userRepository.GetUserFromDbAsync(model);
             if (user != null)
             {
                 var claims = new List<Claim>
