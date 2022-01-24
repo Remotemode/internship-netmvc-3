@@ -32,7 +32,7 @@ namespace MobileWarehouse.Entity.Repository.Implementation
             return user;
         }
 
-        public async Task<User> FindUserFromDbAsync(LoginModel model)
+        public async Task<User> GetUserFromDbAsync(LoginModel model)
         {
             var user = await _applicationContext.Users
                     .Include(u => u.Role)
