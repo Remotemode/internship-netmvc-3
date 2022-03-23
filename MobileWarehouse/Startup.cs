@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using MobileWarehouse.Extensions;
 using Serilog;
+using Npgsql;
 
 namespace MobileWarehouse
 {
@@ -55,9 +56,30 @@ namespace MobileWarehouse
                         };
                     });
 
-            services.AddDbContextPool<ApplicationContext>(opt => opt.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-               ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection")),
-                   x => x.MigrationsAssembly("Entity")));
+            //services.AddDbContextPool<ApplicationContext>(opt => opt.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
+            //ServerVersion.AutoDetect(Configuration.GetConnectionString("DefaultConnection")),
+            //x => x.MigrationsAssembly("Entity")));
+
+            var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+            if (databaseUrl != null)
+            {
+                var databaseUri = new Uri(databaseUrl);
+                var userInfo = databaseUri.UserInfo.Split(':');
+                var builder = new NpgsqlConnectionStringBuilder
+                {
+                    Host = databaseUri.Host,
+                    Port = databaseUri.Port,
+                    Username = userInfo[0],
+                    Password = userInfo[1],
+                    Database = databaseUri.LocalPath.TrimStart('/'),
+                    SslMode = SslMode.Require,
+                    TrustServerCertificate = true
+                };
+                services.AddDbContextPool<ApplicationContext>(opt => opt.UseNpgsql(builder.ToString()));
+            } else
+            {
+                services.AddDbContextPool<ApplicationContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            }
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                .AddCookie(options =>
@@ -87,6 +109,7 @@ namespace MobileWarehouse
 
             app.UseSerilogRequestLogging();
             app.UseHttpsRedirection();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
